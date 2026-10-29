@@ -1,0 +1,78 @@
+== Logistic regression, full model
+
+Call:
+glm(formula = class ~ ., family = "binomial", data = yeastNORM)
+
+Coefficients:
+             Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  -1.85660    0.92087  -2.016  0.04379 *  
+f1           -0.24587    0.72592  -0.339  0.73483    
+f2           -0.85654    0.74685  -1.147  0.25143    
+f3            7.94048    1.11005   7.153 8.48e-13 ***
+f4           -3.68076    0.72482  -5.078 3.81e-07 ***
+f5           -0.05108    0.74031  -0.069  0.94500    
+f6          -15.15569  468.36867  -0.032  0.97419    
+f7            0.87188    1.05127   0.829  0.40690    
+f8           -2.73624    0.89647  -3.052  0.00227 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 785.34  on 617  degrees of freedom
+Residual deviance: 667.50  on 609  degrees of freedom
+AIC: 685.5
+
+Number of Fisher Scoring iterations: 14
+
+
+== Stepwise selection
+  Step Df    Deviance Resid. Df Resid. Dev      AIC
+1      NA          NA       609   667.4962 685.4962
+2 - f5  1 0.004781051       610   667.5010 683.5010
+3 - f1  1 0.117899544       611   667.6189 681.6189
+4 - f7  1 0.671951783       612   668.2908 680.2908
+
+== SVM tuning, best parameters
+      Kernel                        Parameters CVaccuracy     Train Additional nSV
+1     Linear                  C=0.000244140625  0.6683765 0.6682848  0.6484018 417
+2 Polynomial C=0.125, gamma=0.25, d=4, coef0=1  0.7104707 0.8139159  0.7283105 375
+3        RBF                  C=0.5, gamma=0.5  0.7331571 0.7815534  0.7237443 470
+
+== Cluster means (hierarchical, k = 2)
+                   [,1]    [,2]
+cluster           1.000   2.000
+radius_mean      19.070  13.094
+area_mean      1138.274 542.410
+concavity_mean    0.180   0.090
+
+== PCA
+Importance of components:
+                          PC1    PC2    PC3     PC4     PC5     PC6     PC7     PC8     PC9    PC10    PC11
+Standard deviation     1.6557 1.3416 1.1706 1.07659 0.99592 0.92149 0.86820 0.85467 0.75146 0.63699 0.57587
+Proportion of Variance 0.2284 0.1500 0.1142 0.09659 0.08265 0.07076 0.06281 0.06087 0.04706 0.03381 0.02764
+Cumulative Proportion  0.2284 0.3784 0.4926 0.58919 0.67184 0.74261 0.80542 0.86629 0.91335 0.94716 0.97480
+                         PC12
+Standard deviation     0.5499
+Proportion of Variance 0.0252
+Cumulative Proportion  1.0000
+                            PC1    PC2
+age                      -0.204  0.450
+anaemia                  -0.244 -0.116
+creatinine_phosphokinase  0.320  0.027
+diabetes                 -0.308 -0.177
+ejection_fraction         0.164 -0.128
+high_blood_pressure      -0.347 -0.133
+platelets                -0.049 -0.202
+serum_creatinine         -0.224  0.514
+serum_sodium              0.380 -0.277
+sex                       0.329  0.463
+smoking                   0.370  0.278
+time                      0.334 -0.209
+
+== MDS goodness of fit
+          GOF (abs eig) GOF (pos eig)
+Euclidean         0.378         0.378
+Manhattan         0.328         0.412
+Maximum           0.264         0.327
+Gower             0.379         0.460
